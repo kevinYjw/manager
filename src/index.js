@@ -4,10 +4,13 @@ import './index.css';
 // import App from './App';
 import Admin from './admin';
 import * as serviceWorker from './serviceWorker';
+import Route1 from './pages/route_demo/route1/Home';
+import Route2 from './pages/route_demo/route2/Router'; 
+import Route3 from './pages/route_demo/route3/Router'; 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Admin />
+    <Route3 />
   </React.StrictMode>,
   document.getElementById('root')
 );
