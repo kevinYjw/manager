@@ -2,15 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import Admin from './admin';
+// import Admin from './admin';
+import Router from './router';
 import * as serviceWorker from './serviceWorker';
-import Route1 from './pages/route_demo/route1/Home';
-import Route2 from './pages/route_demo/route2/Router'; 
-import Route3 from './pages/route_demo/route3/Router'; 
+// import Route1 from './pages/route_demo/route1/Home';
+// import Route2 from './pages/route_demo/route2/Router'; 
+// import Route3 from './pages/route_demo/route3/Router'; 
 
 ReactDOM.render(
   <React.StrictMode>
-    <Route3 />
+    <Router />
   </React.StrictMode>,
   document.getElementById('root')
 );

@@ -41,7 +41,7 @@ export default class Header extends React.Component{
         return (<div>
             <div className="header">
                 <span className="name">欢迎， {this.state.userName}</span>
-                <a href="javascript:void(0):;">退出</a>
+                <a>退出</a>
             </div>
             <Row className="crumbs">
                 <Col span="4" className="crumbs-title">首页</Col>
@@ -50,7 +50,7 @@ export default class Header extends React.Component{
                     <span className="weather-img">
                         <img src={this.state.weather.dayPictureUrl} alt=""/>
                     </span>
-                    <span class="weather-detail">{this.state.weather['weather']}</span>
+                    <span className="weather-detail">{this.state.weather['weather']}</span>
                 </Col>
             </Row>
         </div>);
