@@ -4,6 +4,8 @@ import App from './App';
 import Admin from './admin';
 import NoMatch from './components/NoMatch/index';
 import Home from './pages/Home';
+import City from './pages/City';
+import Order from './pages/Order';
 
 export default class Router extends React.Component{
     render(){
@@ -14,7 +16,8 @@ export default class Router extends React.Component{
                         <Admin>
                             <Switch>
                                 <Route path='/home' component={Home}></Route>
-                                <Redirect to='/home' />
+                                <Route path='/city' component={City}></Route>
+                                <Route path='/order' component={Order}></Route>
                                 <Route component={NoMatch}></Route>
                             </Switch>
                         </Admin>

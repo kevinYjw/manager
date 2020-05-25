@@ -3,7 +3,7 @@ import {Row,Col} from 'antd';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import NavList from './components/NavLeft';
-import Home from './pages/Home';
+// import Home from './pages/Home';
 
 import './common/style/common.less';
 

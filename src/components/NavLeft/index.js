@@ -5,7 +5,7 @@ import {Link} from 'react-router-dom';
 
 import './index.less';
 
-let {SubMenu} = Menu;
+const { SubMenu } = Menu;
 
 export default class NavLeft extends React.Component{
     componentWillMount(){
