@@ -13,6 +13,8 @@ export default class Order extends React.Component{
         this.state = {
             list:[],
             pagination:0,
+            selectedRowKeys:null,
+            selectedItem:{}
         }
     }
     param = {
@@ -71,18 +73,39 @@ export default class Order extends React.Component{
                 dataIndex: 'user_pay'
             }
         ]
-        return (<div>
+        const selectedRowKeys = this.state.selectedRowKeys;
+        const rowSelection = {
+            type:'radio',
+            selectedRowKeys,
+            onChange:this.onRowClick
+        }
+        return (<div style={{width:'100%'}}>
             <Card>
                 <FilterForm />
             </Card>
             <Card>
-                <Button>订单详情</Button>
+                <Button onClick={this.openOrderDetail}>订单详情</Button>
                 <Button style={{marginLeft:'20px'}}>结束订单</Button>
             </Card>
             <div>
-                <Table columns={columns} dataSource={this.state.list} pagination={this.state.pagination}/>
+                <Table 
+                    columns={columns} 
+                    rowSelection={rowSelection} 
+                    dataSource={this.state.list} 
+                    pagination={this.state.pagination}
+                    />
             </div>
         </div>)
+    }
+    openOrderDetail = () => {
+        let selectedItem = this.state.selectedItem;
+        window.open(`/#/common/order/detail/${selectedItem.id}`,'_blank')
+    }
+    onRowClick = (index,record) => {
+        this.setState({
+            selectedRowKeys:index,
+            selectedItem:record[0]
+        })
     }
     getOrderData = () => {
         let this_ = this;
@@ -95,6 +118,10 @@ export default class Order extends React.Component{
             }
         }).then((res) => {
             if(res.code == 0){
+                res.result.item_list.forEach(item => {
+                    item['key'] = item.id
+                    return item;
+                })
                 this_.setState({
                     list:res.result.item_list,
                     pagination:Util.pagination(res,(current) => {

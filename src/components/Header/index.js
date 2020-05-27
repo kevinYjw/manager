@@ -15,7 +15,8 @@ export default class Header extends React.Component{
     }
     componentWillMount(){
         this.setState({
-            userName:'河畔一角'
+            userName:'河畔一角',
+            second:this.props.second || null
         })
         setInterval(() => {
             let currentTime = getTime.formateDate(new Date().getTime());
@@ -38,21 +39,24 @@ export default class Header extends React.Component{
         })
     }
     render(){
-        return (<div>
+        return (<div style={{width:'100%'}}>
             <div className="header">
                 <span className="name">欢迎， {this.state.userName}</span>
                 <a href="javascript:void(0);">退出</a>
             </div>
-            <Row className="crumbs">
-                <Col span="4" className="crumbs-title">首页</Col>
-                <Col span="20" className="crumbs-weather">
-                    <span className="time">{this.state.currentTime}</span>
-                    <span className="weather-img">
-                        <img src={this.state.weather.dayPictureUrl} alt=""/>
-                    </span>
-                    <span className="weather-detail">{this.state.weather['weather']}</span>
-                </Col>
-            </Row>
+            {
+                this.state.second ? '' : 
+                <Row className="crumbs">
+                    <Col span="4" className="crumbs-title">首页</Col>
+                    <Col span="20" className="crumbs-weather">
+                        <span className="time">{this.state.currentTime}</span>
+                        <span className="weather-img">
+                            <img src={this.state.weather.dayPictureUrl} alt=""/>
+                        </span>
+                        <span className="weather-detail">{this.state.weather['weather']}</span>
+                    </Col>
+                </Row>
+            }
         </div>);
     }
 }
